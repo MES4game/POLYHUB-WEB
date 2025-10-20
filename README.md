@@ -25,7 +25,6 @@ Front-end and back-end code are in separate repositories:
   - [Releases](#releases)
   - [Actions](#actions)
   - [Secrets](#secrets)
-  - [Variables](#variables)
   - [Settings](#settings)
     - [General](#general)
     - [Rules](#rules)
@@ -130,10 +129,6 @@ Front-end and back-end code are in separate repositories:
 
 - ### Secrets
   - `ADMIN_TOKEN`: Admin GitHub user token with contents write permission on that repo (make it inside an environment named `release` to restrict access only to the dev branch)
-
-- ### Variables
-  - `DOCKERHUB_REPOSITORY_FRONT`: Docker Hub repository name for front-end image
-  - `DOCKERHUB_REPOSITORY_BACK`: Docker Hub repository name for back-end image
 
 - ### Settings
   - #### [General](https://github.com/MES4game/POLYHUB-WEB/settings)
