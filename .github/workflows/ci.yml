@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  analysis:
+    name: Run CodeQL analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      packages: read
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - language: actions
+          build-mode: none
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Use CodeQL cache
+        uses: actions/cache@v4
+        with:
+          path: codeql-db
+          key: cache-codeql-${{ matrix.language }}-${{ github.run_attempt }}-${{ github.run_id }}
+          restore-keys: |
+            cache-codeql-${{ matrix.language }}-${{ github.run_attempt }}-
+            cache-codeql-${{ matrix.language }}-
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
+          db-location: codeql-db
