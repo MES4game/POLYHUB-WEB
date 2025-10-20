@@ -1,0 +1,11 @@
+*
+
+!.gitignore
+!.github/
+!.github/**
+
+!LICENSE
+!README.md
+
+!install.sh
+!site.conf.template
