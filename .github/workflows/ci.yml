@@ -13,7 +13,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
-      packages: read
+      actions: read
     strategy:
       fail-fast: false
       matrix:
@@ -23,15 +23,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-
-      - name: Use CodeQL cache
-        uses: actions/cache@v4
-        with:
-          path: codeql-db
-          key: cache-codeql-${{ matrix.language }}-${{ github.run_attempt }}-${{ github.run_id }}
-          restore-keys: |
-            cache-codeql-${{ matrix.language }}-${{ github.run_attempt }}-
-            cache-codeql-${{ matrix.language }}-
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -43,4 +34,4 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
-          db-location: codeql-db
+          upload: true
