@@ -186,7 +186,11 @@ Le projet **PolyHUB** a atteint la majorité de ses objectifs fonctionnels décr
 
 
 * **Julien TAP**
-  * TODO
+  * **Auto-réflexion** : Ce projet m'a principalement aidé à développer ma vision sur l'architecture frontend/backend et surtout la manière dont les deux se rejoignent. Il m'a aussi permis de réaliser que beaucoup de tâches réalisées sont très répétitives, ce qui a tiré ma curiosité vers les possibilités d'automatisations et de déploiements que j'aimerais essayer de développer par la suite. J'ai pu découvrir l'utilisation de Docker et d'une API, ainsi que bien sûr travailler mes capacités de conception frontend, notamment comment l'insertion de données "massives" venant d'un backend est vouée à être traitée.
+  * **Utilisation de l'IA** : De même que mon camarade Mael, j'ai utilisé l'outil Copilot intégré à mon IDE VsCode, avec le modèle Claude Sonnet 4.5.
+  Son utilisation a été pratiquement pour le styling en cascade d'un composant et de ses fils, ce qui fait gagner beaucoup de temps, en général pour la cohérence visuelle ou les tâches répétitives. Néanmoins, son utilisation arrivait toujours après une première réflexion et si seulement cela était vraiment nécessaire. Il m'est arrivé très souvent de constater des erreurs, des incohérences ou simplement que l'IA ne faisait pas la fonction désirée.
+  * **Compétence** : 
+        * **Design vs Realisation** : Je pense que ce qui me surprend le plus après la réalisation de ce projet, c'est à quel point la phase de design initiale est compliquée : il est très difficile d'imaginer toutes les options, complications, possibilités et solutions de son site web au début du projet. Au final, le design et les fonctionnalités du site sont arrivés progressivement en fonction de notre avancée. J'ai néanmoins appris beaucoup de choses, notamment des bonnes pratiques auxquelles je pourrai penser dès le début de mon prochain projet WEB pour faciliter et accélérer les choses.
 
 ---
 
