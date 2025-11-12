@@ -143,7 +143,20 @@ Le projet **PolyHUB** a atteint la majorité de ses objectifs fonctionnels décr
 ## 5. Auto-reflection
 
 * **Maxime DAUPHIN**
-  * TODO
+    * **Auto-réflexion** : Ce projet m'a permis de beaucoup progresser dans mon utilisation des technologies modernes (**GitHub**/ **Docker**) et de mieux travailler en équipe. Il m'a aussi fait remarquer que je me prenais trop la tête sur certains aspects du développement. En voulant faire quelque chose de parfait, j'ai pris du retard sur le projet, et cette perte de temps n'aura pas été utile au projet.
+    * **Utilisation de l'IA** : Lors de ce projet, j'ai utilisé l'IA de Google **«Gemini»**. Lorsque je n'arrivais pas à trouver une réponse à un problème dans la documentation ou sur **Stack Overflow**, elle m'a été en partie utile. En effet, l'IA arrivait à me trouver de potentiels problèmes, mais ces derniers n'étaient pas forcément la cause de l'erreur, et même des fois n'étaient pas des problèmes. Mais même pour les problèmes qu'elle trouvait, elle arrivait rarement à me donner une version corrigée fonctionnelle, mais cela m'aidait à trouver de nouvelles pistes de rechercheréflexion.
+    * **Compétences** :
+        * **Complexité & Problème** : Ayant déjà réalisé de petits projets pour un club, j'avais déjà un niveau de base. Le projet m'a notamment permis de m'améliorer dans l'élaboration d'une structure plus claire et modulaire.
+        * **Modèle de données & Back-end** : De même, le projet m'a permis d'améliorer mes compétences en modélisation de données et en conception d'API **RESTful**, notamment grâce à l'utilisation de **TSOA** pour la validation automatique des schémas.
+        * **Front-end & UX** : Bien que mon rôle principal nait pas été le Front-end, j'ai acquis une meilleure compréhension de la liaison entre le Front-end et le Back-end, ainsi que des principes de base de l'UX, grâce à l'initialisation de la structure Front-end.
+        * **Qualité du code** : J'ai appris l'importance d'écrire un code propre et maintenable, en utilisant **TypeScript** pour renforcer la sécurité des types et réduire les erreurs. J'ai également intégré des pratiques de revue de code pour améliorer la qualité globale du projet, comme la mise en place de linters.
+        * **Tests & Validation** : J'ai découvert l'importance des tests automatisés et de la validation des schémas API pour garantir la fiabilité du système. L'utilisation de **TypeScript**, **TSOA** et **ESLint** m'a aidé à minimiser les erreurs. J'ai commencé à me renseigner sur les tests unitaires, bien que je n'aie pas encore eu l'occasion de les implémenter pleinement dans ce projet.
+        * **Cahier des charges & Trajectoire** : J'ai appris à élaborer un cahier des charges clair et à suivre une trajectoire de développement structurée, en adaptant le plan initial en fonction des défis rencontrés.
+        * **Veille & Positionnement** : J'ai amélioré mes compétences en veille technologique, en me tenant informé des dernières tendances et outils dans le développement web, ce qui m'a permis de faire des choix technologiques éclairés pour le projet.
+        * **Réflexivité & Argumentation** : J'ai développé ma capacité à réfléchir de manière critique sur mes choix techniques et à argumenter mes décisions, en tenant compte des besoins du projet et des contraintes techniques.
+        * **Clarté & Impact** : J'ai appris à communiquer de manière claire et concise, tant à l'écrit qu'à l'oral, en expliquant les aspects techniques du projet à des non-spécialistes.
+        * **Planification & Suivi** : J'ai renforcé mes compétences en gestion de projet, en planifiant les tâches, en suivant l'avancement et en ajustant les priorités en fonction des imprévus.
+        * **DevOps & Cycle de vie** : J'ai acquis une compréhension plus approfondie des pratiques DevOps, notamment en ce qui concerne la conteneurisation avec **Docker** et l'automatisation des tests et des déploiements via **CI/CD**.
 
 * **Maël HOUPLINE**
   * TODO
