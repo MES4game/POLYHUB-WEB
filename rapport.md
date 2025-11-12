@@ -106,7 +106,23 @@ La base de données MySQL stocke les informations essentielles à l'EDT. Le mod�
 
 ### **✨ Aperçu du Front-end**
 
-TODO
+Le design initial de l'application a été réalisé sur le site **Figma**. Lors du développement du front, ce design a été partiellement reproduit. Cela a été rendu possible grâce à l'utilisation des composants Shadcn directement dans Figma. Mais un aspect important de l'application n'a pas été anticipé lors de la phase de conception de l'UX : la page administrateur, qui a du être improvisé en cours du projet.
+Ci dessous, plusieurs aspects de l'application web ainsi que le Figma associé.
+
+**Vue utilisateur**
+
+![FIGMA main](./images/figma-main-view.png)
+*Figma*
+
+**Page de connexion**
+
+![FIGMA login](./images/figma-login-page.png)
+*Figma*
+
+**Page d'ajout d'un cours**
+
+![FIGMA event](./images/figma-create-event.png)
+*Figma*
 
 ---
 
@@ -124,8 +140,8 @@ Le projet **PolyHUB** a atteint la majorité de ses objectifs fonctionnels décr
 
 * **Points Négatifs (Faiblesses / Retard)** :
     * **Retard de Planification** : Le projet a accumulé un retard (principalement lié à la configuration initiale de l'infrastructure et la phase d'apprentissage, mais également dû à des facteurs externes tel que le projet de C++ avec une échéance similaire).
-    * **Absence du scrapper**: Nous n'avons pas eu le temps de déveloper le scrapper pour récupérer les donéees depuis le site actuel.
-    * **Tests de Couverture** : Des tests unitaires pourraient être ajouté.
+    * **Absence du scrapper**: Nous n'avons pas eu le temps de déveloper le scrapper pour récupérer les données depuis le site actuel.
+    * **Tests de Couverture** : Des tests unitaires pourraient être ajoutés.
 
 ### **🚧 Difficultés Rencontrées et Solutions**
 
@@ -144,7 +160,7 @@ Le projet **PolyHUB** a atteint la majorité de ses objectifs fonctionnels décr
 
 ---
 
-## 5. Auto-reflection
+## 5. Auto-reflexion
 
 * **Maxime DAUPHIN**
     * **Auto-réflexion** : Ce projet m'a permis de beaucoup progresser dans mon utilisation des technologies modernes (**GitHub**/ **Docker**) et de mieux travailler en équipe. Il m'a aussi fait remarquer que je me prenais trop la tête sur certains aspects du développement. En voulant faire quelque chose de parfait, j'ai pris du retard sur le projet, et cette perte de temps n'aura pas été utile au projet.
@@ -163,7 +179,11 @@ Le projet **PolyHUB** a atteint la majorité de ses objectifs fonctionnels décr
         * **DevOps & Cycle de vie** : J'ai acquis une compréhension plus approfondie des pratiques DevOps, notamment en ce qui concerne la conteneurisation avec **Docker** et l'automatisation des tests et des déploiements via **CI/CD**.
 
 * **Maël HOUPLINE**
-  * TODO
+  * **Auto-réflexion** : Ce projet m'a apporté une première approche convaincante du framework React pour le développement web, framework que j'ai préféré par rapport au framework Angular que j'ai pu tester l'an passé. Il m'a permis de travailler pour la première fois sur un projet à 3, dans une infrastructure Git propre et complète (CI/CD). J'ai trouvé l'utilisation du linter pertinente pour apprendre les règles de bonne pratique, mais trop contraignante, ce qui a en partie contribué au retard accumulé à certains moments.
+  * **Utilisation de l'IA** : Dans ce projet, j'ai uniquement utilisé l'outil GitHub Copilot intégré à l'IDE Visual Studio Code. Lorsque je me trouvais face à un problème, je commençais toujours par chercher dans des forums comme StackOverflow et dans les documentations. L'IA était un dernier recours, et ne fournissait pas toujours la solution souhaitée. Je l'ai également utilisé pour son système d'auto-complétion du code. Cela m'a fait gagner du temps pour les tâches répétitives, au détriment probablement d'un travail de réflexion pour rendre le code moins répétitif.
+  * **Compétence** :
+        * **Front-End et UX** : Ce projet m'a fait progressé dans le domaine du Front-End grâce à l'utilisation des composants Shadcn, utilisés pour réaliser la plupart des composants du site web. Couplé à l'utilisation de Tailwind CSS, que je n'avais également jamais utilisé avant, cela permet de faire des composants flexibles et adaptable à presque toutes sortes de situations. Je n'ai cependant pas trouvé tous les composants que j'aurai voulu sur Shadcn, ce qui m'a demandé de faire des composants sans, et qui étaient moins élégants au final.
+
 
 * **Julien TAP**
   * TODO
@@ -174,7 +194,7 @@ Le projet **PolyHUB** a atteint la majorité de ses objectifs fonctionnels décr
 
 **PolyHUB** est bien plus qu'un simple projet étudiant ; c'est une **réponse directe à un besoin réel et non satisfait** de la communauté de notre école. Grâce à une architecture technique moderne et à une séparation claire des rôles (Back-end/Infra par **Maxime**, Design/Front par **Julien**, Front/Liaison par **Maël**), nous avons pu concevoir une application performante, fiable et agréable à utiliser.
 
-Malgré de légers retards liés à la courbe d'apprentissage de technologies pointues, la qualité du produit final et l'automatisation du déploiement (Docker/CI/CD) démontrent la **maturité technique** de l'équipe. PolyHUB est désormais prêt à être présenté comme une **alternative crédible** à l'outil existant, représentant une **opportunité stratégique** pour l'école et un service précieux pour ses étudiants.
+Malgré de légers retards liés à la courbe d'apprentissage de technologies pointues, la qualité du produit final et l'automatisation du déploiement (Docker/CI/CD) démontrent la **maturité technique** de l'équipe. Avec encore du travail sur des aspects du front-end comme la responsivité, PolyHUB pourrait être présenté comme une **alternative crédible** à l'outil existant, représentant une **opportunité stratégique** pour l'école et un service précieux pour ses étudiants.
 
 ---
 
