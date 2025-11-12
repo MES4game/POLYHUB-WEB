@@ -114,15 +114,24 @@ Ci dessous, plusieurs aspects de l'application web ainsi que le Figma associé.
 ![FIGMA main](./images/figma-main-view.png)
 *Figma*
 
+![main](./images/main-view.png)
+*Résultat obtenu*
+
 **Page de connexion**
 
 ![FIGMA login](./images/figma-login-page.png)
 *Figma*
 
+![login](./images/login-page.png)
+*Resultat obtenu*
+
 **Page d'ajout d'un cours**
 
 ![FIGMA event](./images/figma-create-event.png)
 *Figma*
+
+![event](./images/create-event.png)
+*Resultat obtenu*
 
 ---
 
