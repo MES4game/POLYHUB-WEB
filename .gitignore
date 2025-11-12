@@ -7,5 +7,10 @@
 !LICENSE
 !README.md
 
-!install.sh
+!docker-compose.yml
+!example.env
+!polyhub-web-db_schema.svg
+!rapport.md
 !site.conf.template
+!images/
+!images/**
