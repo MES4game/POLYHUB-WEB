@@ -22,13 +22,10 @@ Front-end and back-end code are in separate repositories:
   - [PR](#pr)
 - [Git Commands](#git-commands)
 - [GitHub](#github)
-  - [Releases](#releases)
-  - [Actions](#actions)
-  - [Secrets](#secrets)
   - [Settings](#settings)
     - [General](#general)
     - [Rules](#rules)
-    - [Actions](#actions-1)
+    - [Actions](#actions)
     - [Environments](#environments)
     - [Advanced Security](#advanced-security)
 
@@ -38,10 +35,40 @@ Front-end and back-end code are in separate repositories:
 
 - `.github`: GitHub-related files (workflows, issue templates, etc.)
 - `.gitignore`: files to ignore by git
-- `install.sh`: installation script
 - `LICENSE`: license file (MIT)
+- `polyhub-web-db_schema.svg`: database schema diagram
+- `rapport.md`: project report
 - `README.md`: this file
 - `site.conf.template`: nginx configuration template
+
+---
+
+## Installation
+
+- NO need to clone any repository
+
+- prerequisites:
+  - Docker
+  - Docker Compose
+  - Nginx (optional, only if you want to use it as reverse proxy)
+
+- images:
+  - front image: [![Docker Image Version](https://img.shields.io/docker/v/mes4game/polyhub-web-front?sort=semver)![Docker Image Size](https://img.shields.io/docker/image-size/mes4game/polyhub-web-front?sort=semver)](https://hub.docker.com/r/mes4game/polyhub-web-front)
+  - back image: [![Docker Image Version](https://img.shields.io/docker/v/mes4game/polyhub-web-back?sort=semver)![Docker Image Size](https://img.shields.io/docker/image-size/mes4game/polyhub-web-back?sort=semver)](https://hub.docker.com/r/mes4game/polyhub-web-back)
+  - db image: [![Docker Image Version](https://img.shields.io/docker/v/mes4game/polyhub-web-db?sort=semver)![Docker Image Size](https://img.shields.io/docker/image-size/mes4game/polyhub-web-db?sort=semver)](https://hub.docker.com/r/mes4game/polyhub-web-db)
+
+- steps to install:
+  1. open a terminal and navigate to the folder where you want to download the `docker-compose.yml` file
+  2. you can find an example of `docker-compose.yml` [here](./docker-compose.yml)
+      - you can copy it with `curl -o docker-compose.yml https://raw.githubusercontent.com/MES4game/POLYHUB-WEB/main/docker-compose.yml`
+  3. you also need to copy [`example.env`](./example.env) to `.env`
+      - you can get it with `curl -o .env https://raw.githubusercontent.com/MES4game/POLYHUB-WEB/main/example.env`
+  4. edit `.env` to your needs
+  5. run `docker compose up -d --force-recreate` to start the containers
+  6. (optional) if you want to use Nginx as reverse proxy, copy `site.conf.template` as `polyhub.example.com.conf` to your Nginx configuration folder and edit it to your needs
+      - you can get it with `curl -o /etc/nginx/sites-available/polyhub.example.com.conf https://raw.githubusercontent.com/MES4game/POLYHUB-WEB/main/site.conf.template`
+      - create a symlink to `sites-enabled` (e.g. `ln -s /etc/nginx/sites-available/polyhub.example.com.conf /etc/nginx/sites-enabled/`)
+      - restart Nginx to apply the changes (e.g. `systemctl restart nginx`)
 
 ---
 
@@ -113,23 +140,6 @@ Front-end and back-end code are in separate repositories:
 
 ## GitHub
 
-- ### Releases
-  - must have a different tag for every version
-  - must be created from `main` branch
-  - tag must be prefixed with `v` (e.g. `v1.2.3`)
-  - tag must follow semantic versioning (https://semver.org/)
-  - When a new version is pushed to `main`, the Docker image will be tagged with:
-    - the full version (e.g. `v1.2.3`)
-    - the major and minor version (e.g. `v1.2`)
-    - the major version (e.g. `v1`)
-    - the `latest` tag (always points to the latest version)
-
-- ### Actions
-  - `release`: runs on every release PR from `dev` to `main`, generates the release notes and creates a GitHub release
-
-- ### Secrets
-  - `ADMIN_TOKEN`: Admin GitHub user token with contents write permission on that repo (make it inside an environment named `release` to restrict access only to the dev branch)
-
 - ### Settings
   - #### [General](https://github.com/MES4game/POLYHUB-WEB/settings)
     - `Default branch`: `main`
@@ -155,213 +165,148 @@ Front-end and back-end code are in separate repositories:
 
   - #### [Rules](https://github.com/MES4game/POLYHUB-WEB/settings/rules)
     - `no branches`:
-```json
-{
-  "name": "no branches",
-  "target": "branch",
-  "source_type": "Repository",
-  "enforcement": "active",
-  "conditions": {
-    "ref_name": {
-      "exclude": [
-        "refs/heads/main",
-        "refs/heads/dev",
-        "refs/heads/dev-*"
-      ],
-      "include": [
-        "~ALL"
-      ]
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "type": "update"
-    },
-    {
-      "type": "creation"
-    }
-  ],
-  "bypass_actors": []
-}
-```
+      ```json
+      {
+        "name": "no branches",
+        "target": "branch",
+        "source_type": "Repository",
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [
+              "refs/heads/main",
+              "refs/heads/dev",
+              "refs/heads/dev-*"
+            ],
+            "include": [
+              "~ALL"
+            ]
+          }
+        },
+        "rules": [
+          {
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "update"
+          },
+          {
+            "type": "creation"
+          }
+        ],
+        "bypass_actors": []
+      }
+      ```
     - `protected branches`:
-```json
-{
-  "name": "protected branches",
-  "target": "branch",
-  "source_type": "Repository",
-  "enforcement": "active",
-  "conditions": {
-    "ref_name": {
-      "exclude": [],
-      "include": [
-        "refs/heads/main",
-        "refs/heads/dev"
-      ]
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "type": "creation"
-    },
-    {
-      "type": "pull_request",
-      "parameters": {
-        "required_approving_review_count": 1,
-        "dismiss_stale_reviews_on_push": true,
-        "require_code_owner_review": true,
-        "require_last_push_approval": false,
-        "required_review_thread_resolution": true,
-        "automatic_copilot_code_review_enabled": false,
-        "allowed_merge_methods": [
-          "merge"
-        ]
-      }
-    },
-    {
-      "type": "required_status_checks",
-      "parameters": {
-        "strict_required_status_checks_policy": true,
-        "do_not_enforce_on_create": true,
-        "required_status_checks": [
-          {
-            "context": "Run CodeQL analysis (actions, none)"
-          },
-          {
-            "context": "Run CodeQL analysis (javascript-typescript, none)"
-          },
-          {
-            "context": "Run build for testing"
-          },
-          {
-            "context": "Run lint scanning"
-          },
-          {
-            "context": "Run unit tests"
+      ```json
+      {
+        "name": "protected branches",
+        "target": "branch",
+        "source_type": "Repository",
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/heads/main",
+              "refs/heads/dev"
+            ]
           }
-        ]
-      }
-    },
-    {
-      "type": "code_scanning",
-      "parameters": {
-        "code_scanning_tools": [
+        },
+        "rules": [
           {
-            "tool": "CodeQL",
-            "security_alerts_threshold": "high_or_higher",
-            "alerts_threshold": "errors"
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "creation"
+          },
+          {
+            "type": "pull_request",
+            "parameters": {
+              "required_approving_review_count": 1,
+              "dismiss_stale_reviews_on_push": true,
+              "require_code_owner_review": true,
+              "require_last_push_approval": false,
+              "required_review_thread_resolution": true,
+              "automatic_copilot_code_review_enabled": false,
+              "allowed_merge_methods": [
+                "merge"
+              ]
+            }
           }
-        ]
+        ],
+        "bypass_actors": []
       }
-    }
-  ],
-  "bypass_actors": []
-}
-```
+      ```
     - `dev branches`:
-```json
-{
-  "name": "task branches",
-  "target": "branch",
-  "source_type": "Repository",
-  "enforcement": "active",
-  "conditions": {
-    "ref_name": {
-      "exclude": [],
-      "include": [
-        "refs/heads/dev-*"
-      ]
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "type": "required_signatures"
-    }
-  ],
-  "bypass_actors": []
-}
-```
+      ```json
+      {
+        "name": "task branches",
+        "target": "branch",
+        "source_type": "Repository",
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [],
+            "include": [
+              "refs/heads/dev-*"
+            ]
+          }
+        },
+        "rules": [
+          {
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "required_signatures"
+          }
+        ],
+        "bypass_actors": []
+      }
+      ```
     - `no tags`:
-```json
-{
-  "name": "no tags",
-  "target": "tag",
-  "source_type": "Repository",
-  "enforcement": "active",
-  "conditions": {
-    "ref_name": {
-      "exclude": [
-        "refs/tags/v*.*.*"
-      ],
-      "include": [
-        "~ALL"
-      ]
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "type": "creation"
-    },
-    {
-      "type": "update"
-    }
-  ],
-  "bypass_actors": []
-}
-```
-    - `version tags`:
-```json
-{
-  "name": "version tags",
-  "target": "tag",
-  "source_type": "Repository",
-  "enforcement": "active",
-  "conditions": {
-    "ref_name": {
-      "exclude": [],
-      "include": [
-        "refs/tags/v*.*.*"
-      ]
-    }
-  },
-  "rules": [
-    {
-      "type": "deletion"
-    },
-    {
-      "type": "non_fast_forward"
-    },
-    {
-      "type": "update"
-    }
-  ],
-  "bypass_actors": []
-}
-```
+      ```json
+      {
+        "name": "no tags",
+        "target": "tag",
+        "source_type": "Repository",
+        "enforcement": "active",
+        "conditions": {
+          "ref_name": {
+            "exclude": [
+              "refs/tags/v*.*.*"
+            ],
+            "include": [
+              "~ALL"
+            ]
+          }
+        },
+        "rules": [
+          {
+            "type": "deletion"
+          },
+          {
+            "type": "non_fast_forward"
+          },
+          {
+            "type": "creation"
+          },
+          {
+            "type": "update"
+          }
+        ],
+        "bypass_actors": []
+      }
+      ```
 
   - #### [Actions](https://github.com/MES4game/POLYHUB-WEB/settings/actions)
     - `Actions permissions`: Allow all actions and reusable workflows
@@ -371,19 +316,7 @@ Front-end and back-end code are in separate repositories:
     - `Allow GitHub Actions to create and approve pull requests`: false
 
   - #### [Environments](https://github.com/MES4game/POLYHUB-WEB/settings/environments)
-    - `release`: for release workflow
-      - `Deployment protection rules`:
-        - `Required reviewers`:
-          - `reviewers`: only super-admins
-          - `Prevent self-review`: false
-        - `Wait timer`: false
-      - `Allow administrators to bypass configured protection rules`: false
-      - `Deployment branches and tags`:
-        - `Branch rules`:
-          - `dev`
-        - `Tag rules`:
-      - `Environment secrets`:
-        - `ADMIN_TOKEN`: Admin GitHub user token with contents write permission on that repo
+    - none
 
   - #### [Advanced Security](https://github.com/MES4game/POLYHUB-WEB/settings/security_analysis)
     - `Dependency graph`: Enable

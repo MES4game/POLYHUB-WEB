@@ -1,0 +1,61 @@
+services:
+  front:
+    image: ${DOCKER_IMAGE_FRONT}
+    container_name: ${DOCKER_CONTAINER_FRONT}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${DOCKER_PORT_FRONT}:80"
+    volumes:
+      - ${DOCKER_MOUNTED_FRONT}:/mounted
+
+  back:
+    image: ${DOCKER_IMAGE_BACK}
+    container_name: ${DOCKER_CONTAINER_BACK}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${DOCKER_PORT_BACK}:3000"
+    volumes:
+      - ${DOCKER_MOUNTED_BACK}:/mounted
+    environment:
+      HOST: ${BACK_HOST}
+      PORT: 3000
+      NODE_ENV: production
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      FRONT_URL: ${FRONT_URL}
+    depends_on:
+      - db
+    networks:
+      - polyhub-web-network
+
+  db:
+    image: ${DOCKER_IMAGE_DB}
+    container_name: ${DOCKER_CONTAINER_DB}
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_MOUNTED_DB}:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-u", "${DB_USER}", "-p${DB_PASS}"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+    networks:
+      - polyhub-web-network
+
+networks:
+  polyhub-web-network:
+    driver: bridge
