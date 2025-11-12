@@ -64,6 +64,9 @@ Front-end and back-end code are in separate repositories:
   3. you also need to copy [`example.env`](./example.env) to `.env`
       - you can get it with `curl -o .env https://raw.githubusercontent.com/MES4game/POLYHUB-WEB/main/example.env`
   4. edit `.env` to your needs
+  5. you also need to copy [`example.config.json`](./example.config.json) in the folder you mount for the volume used in container with the name `config.json`
+      - you can get it with `curl -o /path/to/mounted-front/config.json https://raw.githubusercontent.com/MES4game/POLYHUB-WEB/main/example.config.json`
+  6. edit `config.json` to your needs
   5. run `docker compose up -d --force-recreate` to start the containers
   6. (optional) if you want to use Nginx as reverse proxy, copy `site.conf.template` as `polyhub.example.com.conf` to your Nginx configuration folder and edit it to your needs
       - you can get it with `curl -o /etc/nginx/sites-available/polyhub.example.com.conf https://raw.githubusercontent.com/MES4game/POLYHUB-WEB/main/site.conf.template`

@@ -9,6 +9,7 @@
 
 !docker-compose.yml
 !example.env
+!example.config.json
 !polyhub-web-db_schema.svg
 !rapport.md
 !site.conf.template
