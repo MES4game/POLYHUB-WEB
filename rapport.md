@@ -15,6 +15,8 @@
 - [4. Critique et Bilan](#4-critique-et-bilan)
 - [5. Auto-reflection](#5-auto-reflection)
 - [6. Conclusion](#6-conclusion)
+- [7. Bibliographie](#7-bibliographie)
+- [8. Annexes](#8-annexes)
 
 ---
 
@@ -102,7 +104,7 @@ La base de données MySQL stocke les informations essentielles à l'EDT. Le mod�
 
 ![API Swagger](./images/polyhub-web-swagger.png)
 
-### **✨ Aperçu du Prototype Front-end**
+### **✨ Aperçu du Front-end**
 
 TODO
 
@@ -191,3 +193,13 @@ Malgré de légers retards liés à la courbe d'apprentissage de technologies po
 - [TSOA Documentation](https://tsoa-community.github.io/docs/)
 - [Stack Overflow](https://stackoverflow.com/)
 - [Gemini](https://gemini.google.com/): Pour la résolution de problèmes techniques spécifiques, notamment liés à la configuration CI/CD et les problèmes non documentés dans les bibliothèques utilisées ou Stack Overflow.
+
+---
+
+## 8. Annexes
+
+* Annexe 1 : Cahier des Charges Complet
+![Cahier des Charges](./images/cahier-des-charges.png)
+* Annexe 2 : Jira Backlog et Suivi des Tâches
+![Jira Backlog](./images/jira-backlog.png)
+![Jira Tasks](./images/jira-tasks.png)
